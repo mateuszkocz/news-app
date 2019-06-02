@@ -6,21 +6,12 @@ import Page from '../components/Page'
 import { ArticlesContext } from '../state/ArticlesProvider'
 
 function Index() {
-  const {ids, articles, fetching, error, setTopicFilter, setSort} = useContext(ArticlesContext)
+  const {ids, articles, fetching, error} = useContext(ArticlesContext)
   const articlesList = ids.map(id => articles[id])
   return (
     <Page>
       <Header>Articles</Header>
       <Filters/>
-      <hr/>
-      <button onClick={() => setTopicFilter('sports')}>sports</button>
-      <button onClick={() => setTopicFilter('tech')}>tech</button>
-      <button onClick={() => setTopicFilter('politics')}>politics</button>
-      <button onClick={() => setTopicFilter('travel')}>travel</button>
-      <hr/>
-      <button onClick={() => setSort('popularity')}>popularity</button>
-      <button onClick={() => setSort('publishedAt')}>publishedAt</button>
-      <hr/>
       {
         fetching && <p>Loading articles…</p>
       }

@@ -1,6 +1,7 @@
-import React from 'react'
 import { shallow, ShallowWrapper } from 'enzyme'
+import React from 'react'
 import ArticleMeta from '../ArticleMeta/ArticleMeta'
+import Image from '../Image'
 import ArticleContent from './ArticleContent'
 
 const article = {
@@ -38,8 +39,9 @@ it('displays metadata', () => {
 })
 
 it('displays an image', () => {
-  const image = component.find(`img[src="${article.urlToImage}"]`)
+  const image = component.find(Image)
   expect(image.exists()).toBeTruthy()
+  expect(image.props()).toEqual(expect.objectContaining({src: article.urlToImage}))
 })
 
 it('displays a title', () => {

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Article } from '../types'
 import ArticleMeta from './ArticleMeta/ArticleMeta'
+import Image from './Image'
 
 interface Props {
   article: Article
@@ -10,7 +11,7 @@ interface Props {
 function ArticlePreview({article}: Props) {
   return (
     <div>
-      <img src={article.urlToImage} alt=""/>
+      <Image src={article.urlToImage} alt=""/>
       <ArticleMeta
         author={article.author}
         date={article.publishedAt}

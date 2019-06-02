@@ -1,6 +1,13 @@
 import React from 'react'
+import styled from 'styled-components'
 import { Article } from '../types'
 import ArticlePreview from './ArticlePreview'
+
+const ArticlesListContainer = styled.section`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 3rem;
+`
 
 interface Props {
   articles: Article[]
@@ -8,7 +15,7 @@ interface Props {
 
 function ArticlesList({articles = []}: Props) {
   return (
-    <div>
+    <ArticlesListContainer>
       {
         !articles.length && <p>Nothing found.</p>
       }
@@ -17,7 +24,7 @@ function ArticlesList({articles = []}: Props) {
           <ArticlePreview article={article} key={article.url}/>
         ))
       }
-    </div>
+    </ArticlesListContainer>
   )
 }
 

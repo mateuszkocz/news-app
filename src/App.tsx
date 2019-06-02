@@ -1,9 +1,12 @@
 import React from 'react'
 import Routes from './Routes'
+import ArticlesProvider from './state/ArticlesProvider'
 
 const App: React.FC = () => {
   return (
-    <Routes/>
+    <ArticlesProvider>
+      <Routes/>
+    </ArticlesProvider>
   )
 }
 

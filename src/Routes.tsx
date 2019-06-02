@@ -7,7 +7,7 @@ function Routes() {
   return (
     <Router>
       <Route path="/" exact component={Index}/>
-      <Route path="/article/:articleId/" component={Article}/>
+      <Route path="/articles/:articleId/" component={Article}/>
     </Router>
   )
 }

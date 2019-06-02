@@ -1,10 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function LinkToArticles() {
   return (
-    <div>
-      Link to articles
-    </div>
+    <Link to="/">
+      Return to articles list
+    </Link>
   )
 }
 

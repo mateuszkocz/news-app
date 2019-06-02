@@ -10,7 +10,7 @@ function Index() {
   const articlesList = ids.map(id => articles[id])
   return (
     <Page>
-      <Header/>
+      <Header>Articles</Header>
       <Filters/>
       <hr/>
       <button onClick={() => setTopicFilter('sports')}>sports</button>

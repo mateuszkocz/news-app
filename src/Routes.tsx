@@ -1,7 +1,7 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import Index from './pages/Index'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Article from './pages/Article'
+import Index from './pages/Index'
 
 function Routes() {
   return (

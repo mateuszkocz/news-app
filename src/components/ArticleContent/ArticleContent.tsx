@@ -1,23 +1,6 @@
 import React from 'react'
+import { Article } from '../../types'
 import ArticleMeta from '../ArticleMeta/ArticleMeta'
-
-interface Source {
-  id: string | null
-  name: string
-  url: string
-}
-
-// TODO: Some values might be null.
-interface Article {
-  source: Source
-  author: string
-  title: string
-  description: string
-  url: string
-  urlToImage: string
-  publishedAt: string
-  content: string
-}
 
 interface Props {
   article: Article

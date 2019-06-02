@@ -1,12 +1,20 @@
 import React from 'react'
-import ArticleContent from './ArticleContent'
+import { Article } from '../types'
+import ArticlePreview from './ArticlePreview'
 
-function ArticlesList() {
+interface Props {
+  articles: Article[]
+}
+
+function ArticlesList({articles = []}: Props) {
   return (
     <div>
       {
-        [1, 2, 3].map(item => (
-          <ArticleContent/>
+        !articles.length && <p>Nothing found.</p>
+      }
+      {
+        articles.length && articles.map(article => (
+          <ArticlePreview article={article} key={article.url}/>
         ))
       }
     </div>

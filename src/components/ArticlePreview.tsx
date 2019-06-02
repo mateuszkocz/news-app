@@ -1,9 +1,14 @@
 import React from 'react'
+import { Article } from '../types'
 
-function ArticlePreview() {
+interface Props {
+  article: Article
+}
+
+function ArticlePreview({article}: Props) {
   return (
     <div>
-      Article Preview
+      {JSON.stringify(article)}
     </div>
   )
 }

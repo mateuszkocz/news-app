@@ -4,6 +4,7 @@ import ArticleMeta from '../ArticleMeta/ArticleMeta'
 import ArticleContent from './ArticleContent'
 
 const article = {
+  $id: 'id',
   source: {
     name: 'Bodzio 24',
     url: 'http://bodzio.com',

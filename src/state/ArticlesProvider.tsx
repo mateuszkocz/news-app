@@ -56,8 +56,13 @@ export const ArticlesContext = createContext<ArticlesProviderState>({...initialS
 
 const normalizeArticles = (articles: Article[]) =>
   articles.reduce<{ ids: string[], articles: Record<string, Article> }>((acc, article) => {
-    acc.ids.push(article.url)
-    acc.articles[article.url] = article
+    // TODO: Need some better way to generate IDs.
+    const $id = (Math.random() * 10000).toFixed()
+    acc.ids.push($id)
+    acc.articles[$id] = {
+      ...article,
+      $id
+    }
     return acc
   }, {
     ids: [],

@@ -6,6 +6,7 @@ export interface Source {
 
 // TODO: Some values might be null.
 export interface Article {
+  $id: string
   source: Source
   author: string
   title: string

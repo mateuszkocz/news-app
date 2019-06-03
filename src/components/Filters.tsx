@@ -1,18 +1,18 @@
 import React, { useContext } from 'react'
-import { ArticlesContext } from '../state/ArticlesProvider'
+import { ArticlesContext, Sort, Topic } from '../state/ArticlesProvider'
 
 function Filters() {
-  const {setTopicFilter, setSort} = useContext(ArticlesContext)
+  const {setTopicFilter, setSort, filters} = useContext(ArticlesContext)
   return (
     <div>
       <hr/>
-      <button onClick={() => setTopicFilter('sports')}>sports</button>
-      <button onClick={() => setTopicFilter('tech')}>tech</button>
-      <button onClick={() => setTopicFilter('politics')}>politics</button>
-      <button onClick={() => setTopicFilter('travel')}>travel</button>
+      <button disabled={filters.topic === Topic.Sports} onClick={() => setTopicFilter(Topic.Sports)}>sports</button>
+      <button disabled={filters.topic === Topic.Tech} onClick={() => setTopicFilter(Topic.Tech)}>tech</button>
+      <button disabled={filters.topic === Topic.Politics} onClick={() => setTopicFilter(Topic.Politics)}>politics</button>
+      <button disabled={filters.topic === Topic.Travel} onClick={() => setTopicFilter(Topic.Travel)}>travel</button>
       <hr/>
-      <button onClick={() => setSort('popularity')}>popularity</button>
-      <button onClick={() => setSort('publishedAt')}>publishedAt</button>
+      <button disabled={filters.sort === Sort.Popularity} onClick={() => setSort(Sort.Popularity)}>popularity</button>
+      <button disabled={filters.sort === Sort.PublishedAt} onClick={() => setSort(Sort.PublishedAt)}>publishedAt</button>
       <hr/>
     </div>
   )

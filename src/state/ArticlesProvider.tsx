@@ -14,7 +14,7 @@ interface ArticlesActions {
   setSort: (sortName: Sort) => unknown
 }
 
-type ArticlesProviderState = ArticlesState & ArticlesActions
+type ArticlesProviderState = ArticlesState & ArticlesActions & {filters: Filters}
 
 export enum Topic {
   Tech = 'tech',
@@ -66,7 +66,9 @@ const initialFilters: Filters = {
   dates: Dates.ThisMonth
 }
 
-export const ArticlesContext = createContext<ArticlesProviderState>({...initialState, ...initialActions})
+const createInitialState = (): ArticlesProviderState => ({...initialState, ...initialActions, filters: initialFilters})
+
+export const ArticlesContext = createContext<ArticlesProviderState>(createInitialState())
 
 const normalizeArticles = (articles: Article[]) =>
   articles.reduce<{ ids: string[], articles: Record<string, Article> }>((acc, article) => {
@@ -114,11 +116,12 @@ const useNewsApi = ({topic, dates, sort}: Filters) => {
 const useArticlesProviderState = (): ArticlesProviderState => {
   const [filters, setFilters] = useState<Filters>(initialFilters)
   const articlesState = useNewsApi(filters)
-  const [state, setState] = useState<ArticlesProviderState>({...initialState, ...initialActions})
+  const [state, setState] = useState<ArticlesProviderState>(createInitialState)
 
   useEffect(() => {
     setState({
       ...articlesState,
+      filters,
       setTopicFilter: (topic: Topic) => setFilters({...filters, topic}),
       setDatesFilter: (dates: Dates) => setFilters({...filters, dates}),
       setSort: (sort: Sort) => setFilters({...filters, sort})

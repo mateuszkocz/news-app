@@ -16,9 +16,23 @@ interface ArticlesActions {
 
 type ArticlesProviderState = ArticlesState & ArticlesActions
 
-type Topic = 'tech' | 'travel' | 'politics' | 'sports'
-type Sort = 'popularity' | 'publishedAt'
-type Dates = 'this month' | 'this week' | 'today'
+export enum Topic {
+  Tech = 'tech',
+  Travel = 'travel',
+  Politics = 'politics',
+  Sports = 'sports',
+}
+
+export enum Sort {
+  Popularity = 'popularity',
+  PublishedAt = 'publishedAt'
+}
+
+export enum Dates {
+  ThisMonth = 'this month',
+  ThisWeek = 'this week',
+  Today = 'today'
+}
 
 interface Filters {
   topic?: Topic
@@ -47,9 +61,9 @@ const initialActions: ArticlesActions = {
 }
 
 const initialFilters: Filters = {
-  topic: 'politics',
-  sort: 'popularity',
-  dates: 'this month'
+  topic: Topic.Politics,
+  sort: Sort.Popularity,
+  dates: Dates.ThisMonth
 }
 
 export const ArticlesContext = createContext<ArticlesProviderState>({...initialState, ...initialActions})
